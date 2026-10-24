@@ -6,12 +6,13 @@ import { IoSearch, IoClose } from "react-icons/io5";
 
 export default function SearchBar() {
   const [search, setSearch] = useState("");
+  console.log(search)
 
   return (
     <div className="w-full ">
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="flex h-10 w-full border-[1px] border-blue-600 transition-all duration-300 hover:border-blue-700 focus-within:border-blue-700 focus-within:shadow-[0_0_5px_rgba(37,99,235,0.4)]"
+        className="flex h-8 w-full border-[2px] border-blue-600 transition-all duration-300 hover:border-blue-700 focus-within:border-blue-700 focus-within:shadow-[0_0_5px_rgba(37,99,235,0.4)]"
       >
         {/* Search Input */}
         <div className="flex min-w-0 flex-1 items-center">

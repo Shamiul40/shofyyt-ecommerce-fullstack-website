@@ -6,7 +6,7 @@ import SearchInput from "./SearchInput";
 
 export default function MiddleHeader() {
   return (
-    <div className="border-b-[1px] border-b-gray-400 h-12 ">
+    <div className="border-b-[1px] border-b-gray-400 h-14 ">
       <Container className="flex items-center justify-between gap-6 my-4 md:gap-20">
         <div>
             <Image src={logo} width={100} alt="logo" />
