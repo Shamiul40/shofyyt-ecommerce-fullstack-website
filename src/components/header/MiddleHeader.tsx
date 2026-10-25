@@ -30,10 +30,10 @@ export default function MiddleHeader() {
             <p>hi guest</p>
             <p className="font-medium">Login / Register</p>
           </div>
-          <div>
-            <HeaderIcons></HeaderIcons>
-          </div>
         </Link>
+        <div>
+          <HeaderIcons></HeaderIcons>
+        </div>
       </Container>
     </div>
   );
