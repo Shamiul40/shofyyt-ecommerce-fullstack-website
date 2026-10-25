@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import React from "react";
 import logo from "@/app/assets/logo.webp";
@@ -6,35 +7,46 @@ import SearchInput from "./SearchInput";
 import Link from "next/link";
 import { LuUserRound } from "react-icons/lu";
 import HeaderIcons from "./HeaderIcons";
+import MobileMenu from "./MobileMenu";
 
 export default function MiddleHeader() {
   return (
-    <div className="border-b-[1px] border-b-gray-400 h-14 ">
-      <Container className="flex items-center justify-between gap-6 my-4 md:gap-20">
-        <Link href="/">
-          <Image src={logo} width={100} alt="logo" />
+    <div className="border-b border-gray-400">
+      <Container className="flex min-h-14 items-center justify-between gap-3 py-3 md:gap-6 lg:gap-10">
+        {/* Logo */}
+        <Link href="/" className="shrink-0">
+          <Image src={logo} width={100} alt="logo" priority />
         </Link>
 
-        <div className="flex-1 hidden md:inline-flex">
-          <SearchInput></SearchInput>
+        {/* Search Input */}
+        <div className="hidden min-w-0 flex-1 md:block">
+          <SearchInput />
         </div>
 
+        {/* User Login */}
         <Link
           href="/signin"
-          className="flex justify-center items-center gap-4 text-sm"
+          className="hidden shrink-0 items-center gap-3 text-sm sm:flex"
         >
-          <div className="border-[1px] rounded-full p-1">
+          <div className="rounded-full border p-2">
             <LuUserRound />
           </div>
+
           <div>
-            <p>hi guest</p>
+            <p className="text-gray-500">Hi Guest</p>
             <p className="font-medium">Login / Register</p>
           </div>
         </Link>
-        <div>
-          <HeaderIcons></HeaderIcons>
+
+        {/* Wishlist & Cart */}
+        <div className="shrink-0 hidden md:inline-flex">
+          <HeaderIcons />
         </div>
+
+        {/* Mobile Menu */}
+        <MobileMenu />
       </Container>
     </div>
   );
 }
+
