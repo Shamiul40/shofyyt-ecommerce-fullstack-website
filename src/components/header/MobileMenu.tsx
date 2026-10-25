@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -6,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX, FiPhone } from "react-icons/fi";
 import { navLinks } from "../constants";
+import { socialLinks } from "./SocialLinks";
 
 export default function MobileMenu() {
   const pathname = usePathname();
@@ -54,9 +54,27 @@ export default function MobileMenu() {
               +88 0123456789
             </a>
           </div> */}
+          {/* social links */}
+          <div className="flex gap-4 border-t border-gray-200 py-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+
+              return (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="text-lg text-gray-600 hover:text-blue-600"
+                >
+                  <Icon />
+                </a>
+              );
+            })}
+          </div>
         </nav>
       )}
     </div>
   );
 }
-

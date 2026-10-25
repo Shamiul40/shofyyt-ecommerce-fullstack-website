@@ -12,7 +12,7 @@ import MobileMenu from "./MobileMenu";
 export default function MiddleHeader() {
   return (
     <div className="border-b border-gray-400">
-      <Container className="flex min-h-14 items-center justify-between gap-3 py-3 md:gap-6 lg:gap-10">
+      <Container className="flex min-h-12 items-center justify-between gap-3 py-3 md:gap-6 lg:gap-10">
         {/* Logo */}
         <Link href="/" className="shrink-0">
           <Image src={logo} width={100} alt="logo" priority />
