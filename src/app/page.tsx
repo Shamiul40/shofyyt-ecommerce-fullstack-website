@@ -1,10 +1,13 @@
-import Header from "@/components/header/Header";
+import Banner from "@/components/body/Banner";
+import Footer from "@/components/footer/Footer";
+
 
 
 export default function Home() {
   return (
    <main>
-    Home page
+  <Banner></Banner>
+  <Footer></Footer>
    </main>
   );
 }
