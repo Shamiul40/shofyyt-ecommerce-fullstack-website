@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export default function Banner() {
   return (
-    <div className="bg-[#115061] py-20 text-gray-50">
+    <div className="bg-[#115061] py-16 text-gray-50">
       <Container>
         <section>
           <div className="mx-auto grid min-h-[360px] max-w-[1400px] grid-cols-1 items-center gap-8 px-5 py-10 sm:px-8 md:grid-cols-2 md:py-0 lg:px-12">
@@ -36,7 +36,7 @@ export default function Banner() {
                 src={bannerImageOne}
                 alt="Smartwatch collection"
                 priority
-                sizes="(max-width: 767px) 90vw, 50vw"
+                sizes="(max-width: 600px) 90vw, 50vw"
                 className="h-auto w-full max-w-[520px] object-contain"
               />
             </div>

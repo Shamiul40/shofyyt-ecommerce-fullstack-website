@@ -17,7 +17,7 @@ export default function BottomHeader() {
 
   return (
     <div className=" border-b border-gray-400 md:block">
-      <Container className="flex min-h-8 items-center justify-between">
+      <Container className=" hidden md:flex min-h-8 items-center justify-between">
         {/* Desktop Navigation */}
         <nav className="flex items-center gap-6">
           {[...navLinks, { name: "Login", href: "/signin" }].map((item) => (
