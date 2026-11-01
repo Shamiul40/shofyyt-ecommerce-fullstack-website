@@ -1,6 +1,6 @@
 
 import Image from "next/image";
-import React from "react";
+
 import logo from "@/app/assets/logo.webp";
 import Container from "./Container";
 import SearchInput from "./SearchInput";
@@ -8,6 +8,7 @@ import Link from "next/link";
 import { LuUserRound } from "react-icons/lu";
 import HeaderIcons from "./HeaderIcons";
 import MobileMenu from "./MobileMenu";
+import { Suspense } from "react";
 
 export default function MiddleHeader() {
   return (
@@ -44,7 +45,9 @@ export default function MiddleHeader() {
         </div>
 
         {/* Mobile Menu */}
+      <Suspense fallback={null}>
         <MobileMenu />
+      </Suspense>
       </Container>
     </div>
   );

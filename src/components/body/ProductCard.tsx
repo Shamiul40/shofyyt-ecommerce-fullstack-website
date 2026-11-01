@@ -4,6 +4,7 @@ import DiscountBadge from "./DiscountBadge";
 import ProductCardSidebar from "./ProductCardSidebar";
 import ProductPrice from "./ProductPrice";
 import AddToCartButton from "./AddToCartButton";
+import Link from "next/link";
 
 interface Props {
   item: ProductType;
@@ -21,6 +22,7 @@ export default function ProductCard({ item }: Props) {
 
         {/* Image */}
         <div className="relative h-full w-full">
+          <Link href={`/products/${item?.id}`} >
           <Image
             src={item.thumbnail}
             alt={item.title}
@@ -28,6 +30,7 @@ export default function ProductCard({ item }: Props) {
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
             className="object-contain transition-transform duration-500 group-hover:scale-105"
           />
+          </Link>
         </div>
 
         {/* Sidebar */}

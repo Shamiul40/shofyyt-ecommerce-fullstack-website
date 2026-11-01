@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -6,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { FiPhone } from "react-icons/fi";
 import { navLinks } from "../constants";
 import Container from "./Container";
+
 
 export default function BottomHeader() {
   const pathname = usePathname();
@@ -46,8 +46,9 @@ export default function BottomHeader() {
             </a>
           </p>
         </div>
+
+        
       </Container>
     </div>
   );
 }
-
