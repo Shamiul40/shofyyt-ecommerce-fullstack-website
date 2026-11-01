@@ -11,10 +11,12 @@ export default function ProductLists({ products }: Props) {
 
   return (
     <Container>
-      productlist
-      {products.map((item) => (
-        <ProductCard key={item?.id} product={item}></ProductCard>
+      
+      <div  className="grid grid-cols-2 gap-4 py-8 md:grid-cols-3 lg:grid-cols-4">
+        {products.map((item) => (
+        <ProductCard key={item?.id} item={item}></ProductCard>
       ))}
+      </div>
     </Container>
   );
 }
