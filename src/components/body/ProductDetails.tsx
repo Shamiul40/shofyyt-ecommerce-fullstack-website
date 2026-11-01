@@ -22,11 +22,8 @@ export default function ProductDetails({ product }: Props) {
       {/* LEFT SIDE - PRODUCT IMAGES */}
 
       <ProductImages
-        images={
-          product.images?.length
-            ? product.images
-            : [product.thumbnail]
-        }
+        images={product.images}
+ 
         title={product.title}
       />
 
