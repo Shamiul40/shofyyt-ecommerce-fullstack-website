@@ -32,7 +32,7 @@ export default function ProductReviews({ product }: Props) {
 
       {/* Reviews List */}
 
-      <div className="space-y-5">
+      <div className="space-y-5 ">
 
         {product.reviews?.length ? (
 
