@@ -50,7 +50,7 @@ export interface ProductType {
 }
 
 export interface StateType {
-  shop: {
+  shofy : {
     cart: ProductType[];
     favorite: ProductType[];
     userInfo: unknown;

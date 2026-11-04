@@ -51,7 +51,7 @@ export default function ProductCard({ item }: Props) {
         <ProductPrice price={item.price} discount={item.discountPercentage} />
 
         {/* Add To Cart */}
-        <AddToCartButton />
+        <AddToCartButton product={item}  />
       </div>
     </div>
   );
