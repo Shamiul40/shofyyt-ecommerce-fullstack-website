@@ -1,44 +1,70 @@
+// 
+
+
+
+
+
+
 "use client";
 
 import Link from "next/link";
-import { FaRegHeart, FaShoppingBag } from "react-icons/fa";
+
+import { FaRegHeart } from "react-icons/fa";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
+import { useSelector } from "react-redux";
+
+import { RootState } from "@/redux/store";
+
 export default function HeaderIcons() {
-  const wishlistCount = 0;
-  const cartCount = 0;
+  const cart = useSelector(
+    (state: RootState) => state.shofy.cart
+  );
+
+  const favorite = useSelector(
+    (state: RootState) => state.shofy.favorite
+  );
+
+  const cartCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  const wishlistCount = favorite.length;
 
   return (
-    <div className="flex items-center justify-center gap-3">
-      {/* Wishlist Icon */}
-      <button
-        type="button"
+    <div className="flex items-center justify-center gap-4">
+
+      {/* Wishlist */}
+      <Link
+        href="/favorite"
         aria-label="Wishlist"
-        className="group relative flex h-8 w-8 items-center justify-center"
+        className="group relative flex h-9 w-9 items-center justify-center"
       >
-        <Link href="/favorite">
-          <FaRegHeart className="text-2xl text-black transition-colors duration-200 group-hover:text-blue-600" />
-        </Link>
+        <FaRegHeart className="text-2xl text-black transition-colors group-hover:text-blue-600" />
 
-        <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-semibold leading-none text-white">
-          {wishlistCount}
-        </span>
-      </button>
+        {wishlistCount > 0 && (
+          <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-semibold text-white">
+            {wishlistCount}
+          </span>
+        )}
+      </Link>
 
-      {/* Shopping Bag Icon */}
-      <button
-        type="button"
-        aria-label="Shopping bag"
-        className="group relative flex h-8 w-8 items-center justify-center"
+      {/* Shopping Cart */}
+      <Link
+        href="/cart"
+        aria-label="Shopping Cart"
+        className="group relative flex h-9 w-9 items-center justify-center"
       >
-        <Link href="/cart">
-          <HiOutlineShoppingBag className="text-3xl text-black transition-colors duration-200 group-hover:text-blue-600" />
-        </Link>
+        <HiOutlineShoppingBag className="text-3xl text-black transition-colors group-hover:text-blue-600" />
 
-        <span className="absolute -right-1 -top-0 flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-semibold leading-none text-white">
-          {cartCount}
-        </span>
-      </button>
+        {cartCount > 0 && (
+          <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] font-semibold text-white">
+            {cartCount}
+          </span>
+        )}
+      </Link>
+
     </div>
   );
 }

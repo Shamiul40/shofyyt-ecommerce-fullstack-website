@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function ProductLists({ products }: Props) {
-  console.log(products);
+  
 
   return (
     <Container>
