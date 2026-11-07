@@ -19,9 +19,6 @@
 // export const { addToCart } = shofySlice.actions;
 // export default shofySlice.reducer;
 
-
-
-
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductType } from "../../type";
 
@@ -49,7 +46,7 @@ export const shofySlice = createSlice({
     // Add to Cart
     addToCart: (state, action: PayloadAction<ProductType>) => {
       const existingProduct = state.cart.find(
-        (item) => item.id === action.payload.id
+        (item) => item.id === action.payload.id,
       );
 
       if (existingProduct) {
@@ -62,11 +59,23 @@ export const shofySlice = createSlice({
       }
     },
 
+    updateQuantity: (state, action) => {
+      const { id, quantity } = action.payload;
+
+      const product = state.cart.find((item) => item.id === id);
+
+      if (product) {
+        if (quantity <= 0) {
+          state.cart = state.cart.filter((item) => item.id !== id);
+        } else {
+          product.quantity = quantity;
+        }
+      }
+    },
+
     // Increase Quantity
     increaseQuantity: (state, action: PayloadAction<number>) => {
-      const product = state.cart.find(
-        (item) => item.id === action.payload
-      );
+      const product = state.cart.find((item) => item.id === action.payload);
 
       if (product) {
         product.quantity += 1;
@@ -75,9 +84,7 @@ export const shofySlice = createSlice({
 
     // Decrease Quantity
     decreaseQuantity: (state, action: PayloadAction<number>) => {
-      const product = state.cart.find(
-        (item) => item.id === action.payload
-      );
+      const product = state.cart.find((item) => item.id === action.payload);
 
       if (product && product.quantity > 1) {
         product.quantity -= 1;
@@ -86,9 +93,7 @@ export const shofySlice = createSlice({
 
     // Remove Product
     removeFromCart: (state, action: PayloadAction<number>) => {
-      state.cart = state.cart.filter(
-        (item) => item.id !== action.payload
-      );
+      state.cart = state.cart.filter((item) => item.id !== action.payload);
     },
 
     // Clear Cart
@@ -100,6 +105,7 @@ export const shofySlice = createSlice({
 
 export const {
   addToCart,
+  updateQuantity,
   increaseQuantity,
   decreaseQuantity,
   removeFromCart,
