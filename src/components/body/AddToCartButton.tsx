@@ -28,8 +28,6 @@
 //   );
 // }
 
-
-
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +37,6 @@ import { toast } from "react-hot-toast";
 import { ProductType } from "../../../type";
 import { addToCart, updateQuantity } from "@/redux/ShofySlice";
 
-
 interface Props {
   product: ProductType;
 }
@@ -48,9 +45,7 @@ export default function AddToCartButton({ product }: Props) {
   const dispatch = useDispatch();
 
   const cartProduct = useSelector((state: any) =>
-    state.shofy.cart.find(
-      (item: ProductType) => item.id === product.id
-    )
+    state.shofy.cart.find((item: ProductType) => item.id === product.id),
   );
 
   const quantity = cartProduct?.quantity || 0;
@@ -65,8 +60,9 @@ export default function AddToCartButton({ product }: Props) {
       updateQuantity({
         id: product.id,
         quantity: quantity + 1,
-      })
+      }),
     );
+    toast.success("Quantity increased!");
   };
 
   const handleDecrease = () => {
@@ -74,11 +70,15 @@ export default function AddToCartButton({ product }: Props) {
       updateQuantity({
         id: product.id,
         quantity: quantity - 1,
-      })
+      }),
     );
+
+     
 
     if (quantity === 1) {
       toast.success("Removed from cart!");
+    } else {
+      toast.success("Quantity decreased!");
     }
   };
 
@@ -98,7 +98,6 @@ export default function AddToCartButton({ product }: Props) {
   // Product already in cart
   return (
     <div className="mt-4 flex w-full items-center justify-between rounded-full border border-blue-500 px-3 py-2">
-
       <button
         onClick={handleDecrease}
         className="flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition hover:bg-red-500 hover:text-white"
@@ -106,9 +105,7 @@ export default function AddToCartButton({ product }: Props) {
         <FiMinus size={15} />
       </button>
 
-      <span className="text-sm font-semibold text-gray-800">
-        {quantity}
-      </span>
+      <span className="text-sm font-semibold text-gray-800">{quantity}</span>
 
       <button
         onClick={handleIncrease}
@@ -116,7 +113,6 @@ export default function AddToCartButton({ product }: Props) {
       >
         <FiPlus size={15} />
       </button>
-
     </div>
   );
 }
