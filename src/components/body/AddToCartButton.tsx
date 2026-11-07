@@ -38,6 +38,7 @@ import { FiShoppingCart, FiCheck } from "react-icons/fi";
 import { useDispatch } from "react-redux";
 import { ProductType } from "../../../type";
 import { addToCart } from "@/redux/ShofySlice";
+import toast from "react-hot-toast";
 
 interface Props {
   product: ProductType;
@@ -49,6 +50,9 @@ export default function AddToCartButton({ product }: Props) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product));
+
+    toast.success(`${product.title} added to cart!`);
+
 
     setAdded(true);
 
