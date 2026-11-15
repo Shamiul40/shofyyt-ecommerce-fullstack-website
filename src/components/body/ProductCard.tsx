@@ -34,7 +34,7 @@ export default function ProductCard({ item }: Props) {
         </div>
 
         {/* Sidebar */}
-        <ProductCardSidebar />
+        <ProductCardSidebar product={item} />
       </div>
 
       {/* Product Details */}
